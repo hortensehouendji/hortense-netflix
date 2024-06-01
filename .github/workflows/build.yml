@@ -41,7 +41,12 @@ jobs:
               #run commands to build and push docker images
               docker build --build-arg TMDB_V3_API_KEY=99caf1554affca2e24e6b609c72d82d4 -t netflix-hortense .
               docker tag netflix-hortense hortensehouendji/netflix-hortense:latest
-              docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-              docker push hortensehouendji/netflix-hortense:latest  
+        #docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+        #docker push hortensehouendji/netflix-hortense:latest  
         #env:
               #DOCKER_CLI_ACI: 1
+      - name: Loin and push to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
