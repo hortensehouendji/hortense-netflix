@@ -43,5 +43,5 @@ jobs:
               docker tag netflix-hortense hortensehouendji/netflix-hortense:latest
               docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
               docker push hortensehouendji/netflix-hortense:latest  
-        env:
-              DOCKER_CLI_ACI: 1
+        #env:
+              #DOCKER_CLI_ACI: 1
