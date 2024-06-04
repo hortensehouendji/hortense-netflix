@@ -47,7 +47,7 @@ jobs:
               DOCKER_CLI_ACI: 1
   deploy:    
     needs: build
-    runs-on: [aws-netflix]  
+    runs-on: self-hosted #[aws-netflix]  
     steps:
       - name: Pull the docker image
         run: docker pull hortensehouendji/netflix-hortense:latest
