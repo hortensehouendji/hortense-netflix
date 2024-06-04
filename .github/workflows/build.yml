@@ -45,6 +45,16 @@ jobs:
               docker push hortensehouendji/netflix-hortense:latest  
         env:
               DOCKER_CLI_ACI: 1
+  deploy:    
+    needs: build
+    runs-on: [aws-netflix]  
+    steps:
+      - name: Pull the docker image
+        run: docker pull hortensehouendji/netflix-hortense:latest
+      - name: Trivy image scan
+        run: trivy image hortensehouendji/netflix-hortense:latest
+      - name: Run the container netflix-hortense
+        run: docker run -d --name netflix-hortense -p 8081:80 hortensehouendji/netflix-hortense:latest
               
       #- name: Loin and push to Docker Hub
         #uses: docker/login-action@v3
